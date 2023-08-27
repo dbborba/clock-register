@@ -17,9 +17,14 @@ public class EmployeeService {
 	public List<Employee> findAll() {
 		return repository.findAll();
 	}
-	
+			
 	public Employee insert(Employee obj) {
 		return repository.save(obj);
+	}
+	
+	public void delete(String stringId) {
+		Long id = Long.parseLong(stringId); 
+		repository.deleteById(id);
 	}
 
 }

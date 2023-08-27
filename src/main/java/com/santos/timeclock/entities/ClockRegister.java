@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -21,7 +23,8 @@ public class ClockRegister implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne
+	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
 	private Timestamp clockRegister;

@@ -2,12 +2,15 @@ package com.santos.timeclock.entities;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,7 +25,10 @@ public class Employee implements Serializable {
 	private String department;
 	private String function;
 	private Integer documentId;
-	private BigDecimal salary;
+	private Double salary;
+	
+	@OneToMany(mappedBy = "employee")
+	public List<ClockRegister> clocks = new ArrayList<>();
 	
 	public Employee() {
 		
@@ -30,7 +36,7 @@ public class Employee implements Serializable {
 	
 	
 
-	public Employee(Long id, String name, String department, String function, Integer documentId, BigDecimal salary) {
+	public Employee(Long id, String name, String department, String function, Integer documentId, Double salary) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -39,7 +45,6 @@ public class Employee implements Serializable {
 		this.documentId = documentId;
 		this.salary = salary;
 	}
-
 
 
 	public Long getId() {
@@ -60,11 +65,11 @@ public class Employee implements Serializable {
 	
 	
 
-	public BigDecimal getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(BigDecimal salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 
@@ -100,9 +105,15 @@ public class Employee implements Serializable {
 	public void setDocumentId(Integer documentId) {
 		this.documentId = documentId;
 	}
+	
+	
 
 
+	public List<ClockRegister> getClocks() {
+		return clocks;
+	}
 
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

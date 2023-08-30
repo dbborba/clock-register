@@ -24,9 +24,9 @@ public class ClockRegister implements Serializable {
 	private Long id;
 	
 	@ManyToOne
-	@JsonIgnore
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
+	
 	private Timestamp clockRegister;
 	
 	public ClockRegister() {

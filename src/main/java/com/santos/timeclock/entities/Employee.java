@@ -1,10 +1,11 @@
 package com.santos.timeclock.entities;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +28,7 @@ public class Employee implements Serializable {
 	private Integer documentId;
 	private Double salary;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "employee")
 	public List<ClockRegister> clocks = new ArrayList<>();
 	

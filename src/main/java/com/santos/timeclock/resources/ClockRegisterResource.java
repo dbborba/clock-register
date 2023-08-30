@@ -41,7 +41,7 @@ public class ClockRegisterResource {
 	
 	@GetMapping(value = "/list")
 	public ResponseEntity<List<ClockRegister>> list(@RequestBody String id) {
-		List<ClockRegister> list = service.list(id);		
+		List<ClockRegister> list = service.list(id);	
 		return ResponseEntity.ok().body(list);
 	}
 	
